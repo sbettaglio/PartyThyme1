@@ -14,6 +14,7 @@ namespace PartyThyme1
       }
       return choice;
     }
+    //adds plants
     public void NewPlantInput()
     {
       var tracker = new PlantTracker();
@@ -39,13 +40,20 @@ namespace PartyThyme1
         Console.WriteLine("Invalid input. Please input (ALL), (LOCATIONS) or (WATER)");
         viewMenu = Console.ReadLine().ToLower();
       }
-
-
+      //displays all the plants by locations
       if (viewMenu == "all")
       {
         tracker.ViewAll();
       }
 
+    }
+    public void RemovePlantInput()
+    {
+      var tracker = new PlantTracker();
+      tracker.ViewAll();
+      Console.WriteLine("What plant do you want to remove? Please select by Id number");
+      var plantId = int.Parse(Console.ReadLine());
+      tracker.RemovePlant(plantId);
     }
   }
 }

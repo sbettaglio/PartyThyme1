@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 
 namespace PartyThyme1
 {
@@ -24,12 +25,44 @@ namespace PartyThyme1
     public void ViewAll()
     {
       var db = new PlantContext();
-      var allPlants = db.Plants;
-      foreach (var plant in allPlants)
+      var viewPlants = db.Plants.OrderBy(plant => plant.LocatedPlant);
+      foreach (var p in viewPlants)
       {
-        Console.WriteLine($"{plant} ");
+        Console.WriteLine($"There is a {p.Species} with an id of {p.Id} in the {p.LocatedPlant}");
       }
 
+    }
+    public void RemovePlant(int plantId)
+    {
+      var db = new PlantContext();
+      var validId = db.Plants.Any(plant => plant.Id == plantId);
+      while (validId != true)
+      {
+        Console.WriteLine("That is not a valid Id number please try again");
+        plantId = int.Parse(Console.ReadLine());
+      }
+      if (validId == true)
+      {
+        var idToRemove = db.Plants.FirstOrDefault(plant => plant.Id == plantId);
+        Console.WriteLine($"Are you sure you wand to remove {idToRemove.Species} with an Id of {idToRemove.Id}? (Y)/(N)");
+        var confirmRemoval = Console.ReadLine().ToLower();
+        while (confirmRemoval != "y" && confirmRemoval != "n")
+        {
+          Console.WriteLine("Please take this seriously we're about to delete a plant. Input (Y) or (N) ");
+          confirmRemoval = Console.ReadLine().ToLower();
+        }
+        if (confirmRemoval == "y")
+        {
+          Console.WriteLine($"{idToRemove.Id} has been removed.");
+          db.Remove(idToRemove);
+          db.SaveChanges();
+        }
+        else
+        {
+          Console.WriteLine("Nothing has been removed.");
+        }
+
+      }
     }
   }
 }

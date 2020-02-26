@@ -25,13 +25,19 @@ namespace PartyThyme1
         }
         else if (choice == "view")
         {
+          //asks what view menu they want to see
           Console.WriteLine("Do you want to view (ALL) plants, plant (LOCATIONS) or plants that need (WATER)");
           var viewMenu = Console.ReadLine().ToLower();
+          //opens menu method
           user.ViewMenu(viewMenu);
         }
         else if (choice == "plant")
         {
           user.NewPlantInput();
+        }
+        else if (choice == "remove")
+        {
+          user.RemovePlantInput();
         }
 
       }
