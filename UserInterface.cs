@@ -45,6 +45,10 @@ namespace PartyThyme1
       {
         tracker.ViewAll();
       }
+      else if (viewMenu == "water")
+      {
+        tracker.NotWatered();
+      }
 
     }
     public void RemovePlantInput()

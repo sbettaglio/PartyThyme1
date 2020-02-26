@@ -81,5 +81,15 @@ namespace PartyThyme1
         Console.WriteLine($"{idToWater.Species} with a Id of {idToWater.Id} was watered on {idToWater.LastWateredDate}");
       }
     }
+    public void NotWatered()
+    {
+      var db = new PlantContext();
+      var wateredToday = db.Plants.Where(plant => plant.LastWateredDate < DateTime.Today);
+      foreach (var p in wateredToday)
+      {
+        Console.WriteLine($"{p.Species} has not been watered today, it was last watered on {p.LastWateredDate}");
+        Console.WriteLine($"{DateTime.Today}");
+      }
+    }
   }
 }
