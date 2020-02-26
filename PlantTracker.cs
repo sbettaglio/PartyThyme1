@@ -64,5 +64,22 @@ namespace PartyThyme1
 
       }
     }
+    public void WaterPlant(int plantId)
+    {
+      var db = new PlantContext();
+      var validId = db.Plants.Any(plant => plant.Id == plantId);
+      while (validId != true)
+      {
+        Console.WriteLine("That is not a valid Id number please try again");
+        plantId = int.Parse(Console.ReadLine());
+      }
+      if (validId == true)
+      {
+        var idToWater = db.Plants.FirstOrDefault(plant => plant.Id == plantId);
+        idToWater.LastWateredDate = DateTime.Now;
+        db.SaveChanges();
+        Console.WriteLine($"{idToWater.Species} with a Id of {idToWater.Id} was watered on {idToWater.LastWateredDate}");
+      }
+    }
   }
 }

@@ -55,5 +55,13 @@ namespace PartyThyme1
       var plantId = int.Parse(Console.ReadLine());
       tracker.RemovePlant(plantId);
     }
+    public void WaterPlantInput()
+    {
+      var tracker = new PlantTracker();
+      tracker.ViewAll();
+      Console.WriteLine("What plant do you want to water? Please select by Id number");
+      var plantId = int.Parse(Console.ReadLine());
+      tracker.WaterPlant(plantId);
+    }
   }
 }

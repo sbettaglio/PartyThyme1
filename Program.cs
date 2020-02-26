@@ -39,6 +39,12 @@ namespace PartyThyme1
         {
           user.RemovePlantInput();
         }
+        else if (choice == "water")
+        {
+          Console.WriteLine("What plant would you like to water?");
+          user.WaterPlantInput();
+
+        }
 
       }
 
