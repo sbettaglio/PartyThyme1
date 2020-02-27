@@ -88,7 +88,25 @@ namespace PartyThyme1
       foreach (var p in wateredToday)
       {
         Console.WriteLine($"{p.Species} has not been watered today, it was last watered on {p.LastWateredDate}");
-        Console.WriteLine($"{DateTime.Today}");
+
+      }
+    }
+    public void Locations(string plantLocated)
+    {
+      var db = new PlantContext();
+      var validLocation = db.Plants.Any(plant => plant.LocatedPlant == plantLocated);
+      while (validLocation == false)
+      {
+        Console.WriteLine("That location doesn't exist. Please input a valid location");
+        plantLocated = Console.ReadLine().ToLower();
+      }
+      if (validLocation == true)
+      {
+        var locatedPlant = db.Plants.Where(plant => plant.LocatedPlant == plantLocated);
+        foreach (var p in locatedPlant)
+        {
+          Console.WriteLine($"{p.Species} is located in {p.LocatedPlant}");
+        }
       }
     }
   }

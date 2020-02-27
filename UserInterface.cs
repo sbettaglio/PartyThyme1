@@ -49,6 +49,12 @@ namespace PartyThyme1
       {
         tracker.NotWatered();
       }
+      else if (viewMenu == "locations")
+      {
+        Console.WriteLine("What location do you want to check?");
+        var plantLocation = Console.ReadLine().ToLower();
+        tracker.Locations(plantLocation);
+      }
 
     }
     public void RemovePlantInput()
