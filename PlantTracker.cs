@@ -112,5 +112,14 @@ namespace PartyThyme1
         }
       }
     }
+    public void NeedWater()
+    {
+      var db = new PlantContext();
+      var lastWater = db.Plants.Select(plant => plant.LastWateredDate.Subtract(DateTime.Now).Sum > plant.WateringFrequency);
+      foreach (var l in lastWater)
+      {
+        Console.WriteLine($"{l.Species} {l.LastWatereDate}");
+      }
+    }
   }
 }

@@ -11,5 +11,6 @@ namespace PartyThyme1
     public DateTime LastWateredDate { get; set; }
     public double WaterNeeded { get; set; }
     public double LightNeeded { get; set; }
+    public int WateringFrequency { get; set; }
   }
 }

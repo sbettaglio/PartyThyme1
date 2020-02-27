@@ -26,7 +26,7 @@ namespace PartyThyme1
         else if (choice == "view")
         {
           //asks what view menu they want to see
-          Console.WriteLine("Do you want to view (ALL) plants, plant (LOCATIONS) or plants that need (WATER)");
+          Console.WriteLine("Do you want to view (ALL) plants, plant (LOCATIONS), plants that have not been (WATER)ed today or plants that (NEED) water now");
           var viewMenu = Console.ReadLine().ToLower();
           //opens menu method
           user.ViewMenu(viewMenu);

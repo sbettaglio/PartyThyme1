@@ -35,9 +35,9 @@ namespace PartyThyme1
     public void ViewMenu(string viewMenu)
     {
       var tracker = new PlantTracker();
-      while (viewMenu != "all" && viewMenu != "locations" && viewMenu != "water")
+      while (viewMenu != "all" && viewMenu != "locations" && viewMenu != "water" && viewMenu != "need")
       {
-        Console.WriteLine("Invalid input. Please input (ALL), (LOCATIONS) or (WATER)");
+        Console.WriteLine("Invalid input. Please input (ALL), (LOCATIONS), (WATER) or (NEED)");
         viewMenu = Console.ReadLine().ToLower();
       }
       //displays all the plants by locations
@@ -54,6 +54,10 @@ namespace PartyThyme1
         Console.WriteLine("What location do you want to check?");
         var plantLocation = Console.ReadLine().ToLower();
         tracker.Locations(plantLocation);
+      }
+      else if (viewMenu == "need")
+      {
+        tracker.NeedWater();
       }
 
     }
