@@ -40,6 +40,7 @@ namespace PartyThyme1
       {
         Console.WriteLine("That is not a valid Id number please try again");
         plantId = int.Parse(Console.ReadLine());
+        validId = db.Plants.Any(plant => plant.Id == plantId);
       }
       if (validId == true)
       {
@@ -72,6 +73,7 @@ namespace PartyThyme1
       {
         Console.WriteLine("That is not a valid Id number please try again");
         plantId = int.Parse(Console.ReadLine());
+        validId = db.Plants.Any(plant => plant.Id == plantId);
       }
       if (validId == true)
       {
@@ -99,6 +101,7 @@ namespace PartyThyme1
       {
         Console.WriteLine("That location doesn't exist. Please input a valid location");
         plantLocated = Console.ReadLine().ToLower();
+        validLocation = db.Plants.Any(plant => plant.LocatedPlant == plantLocated);
       }
       if (validLocation == true)
       {
